@@ -1,0 +1,47 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  position: relative;
+  min-height: 100%;
+  padding-bottom: 50px;
+}
+
+.close-btn {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background: #333;
+  right: 10px;
+  top: 10px;
+  transition: background 200ms ease-out;
+
+  &:hover {
+    background: #eee;
+    &:after,&:before{
+      background: #333;
+    }
+  }
+
+  &:after, &:before{
+    content: "";
+    width: 10px;
+    height: 2px;
+    background: #eee;
+    display: block;
+    position: absolute;
+    top: 9px;
+    left: 5px;
+  }
+  &:after{
+    transform: rotate(45deg);
+  }
+  &:before{
+    transform: rotate(-45deg);
+  }
+
+}
