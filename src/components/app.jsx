@@ -1,10 +1,10 @@
+import PropTypes from "prop-types";
 import React, { Component, Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 // Redux
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import * as groupsActions from "../redux/actions/groupActions";
-
 // components & layouts
 import Header from "./Fragments/Header";
 import Footer from "./Fragments/Footer";
@@ -15,20 +15,11 @@ import AddNewUser from "./usres/AddNewUser";
 import Groups from "./groups/Groups";
 import GroupDetails from "./groups/OneGroup";
 import AddNewGroup from "./groups/AddNewGroup";
-
 // ReactStrap
 import { Container, Spinner } from "reactstrap";
 import SearchBar from "./search/SearchBar";
 
 class App extends Component {
-   componentDidMount() {}
-
-   // submitting new Group from App
-   submitAddNewGroup = FormData => {
-      const { addNewGroupAction } = this.props;
-      addNewGroupAction(FormData);
-   };
-
    render() {
       const { groupsData, usersData } = this.props;
 
@@ -50,8 +41,8 @@ class App extends Component {
                      </Route>
                      <Route exact path="/group/:group_name" component={GroupDetails} />
                      <Route exact path="/user/:user_name" component={UserDetails} />
-                     <Route exact path="/add-new-form">
-                        <AddNewGroup formSubmitted={this.submitAddNewGroup} />
+                     <Route exact path="/add-new-group">
+                        <AddNewGroup />
                      </Route>
                      <Route exact path="/add-new-user">
                         <AddNewUser />
@@ -90,3 +81,8 @@ export default connect(
    mapStateToProps,
    mapDispatchToProps
 )(App);
+
+App.propTypes = {
+   groupsData: PropTypes.array,
+   usersData: PropTypes.array
+};

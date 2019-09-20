@@ -26,6 +26,7 @@ function Users(props) {
                {usersData.map((user, index) => (
                   <Col key={index} md="4">
                      <SmallCard
+                        hide_x_btn={true}
                         delete_btn={() => deleteThisUser(user.user_slug)}
                         card_link={`/user/${user.user_slug}`}
                         card_title={user.user_name}
@@ -39,6 +40,17 @@ function Users(props) {
             <hr />
             <LinkBtn linkText="Add New USer" linkTo="/add-new-user" />
          </section>
+      );
+   } else {
+      return (
+         <div>
+            <section className="group-cards">
+               <p>Looks like we dont have any users added yet :(</p>
+               <p>but you can add new user now :)</p>
+               <hr />
+               <LinkBtn linkText="Add New USer" linkTo="/add-new-user" />
+            </section>
+         </div>
       );
    }
 }

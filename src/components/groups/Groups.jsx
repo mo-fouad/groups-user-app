@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { connect } from "react-redux";
 import { Col, Row } from "reactstrap";
@@ -41,6 +42,7 @@ function Groups(props) {
                   return (
                      <Col key={group.group_slug} sm="4">
                         <SmallCard
+                           hide_x_btn={true}
                            delete_btn={() => deleteThisGroup(group.group_slug)}
                            card_link={`/group/${group.group_slug}`}
                            card_title={group.group_name}
@@ -53,7 +55,7 @@ function Groups(props) {
             </Row>
             {/*todo : Handel the paging */}
             <hr />
-            <LinkBtn linkText="Add New Group" linkTo="/add-new-form" />
+            <LinkBtn linkText="Add New Group" linkTo="/add-new-group" />
          </section>
       );
    } else {
@@ -62,7 +64,7 @@ function Groups(props) {
             <p>Looks like we dont have any groups added yet :(</p>
             <p>but you can add new Groups :)</p>
             <hr />
-            <LinkBtn linkText="Add New Group" linkTo="/add-new-form" />
+            <LinkBtn linkText="Add New Group" linkTo="/add-new-group" />
          </section>
       );
    }
@@ -87,3 +89,10 @@ export default connect(
    mapStateToProps,
    mapDispatchToProps
 )(Groups);
+
+Groups.propTypes = {
+   deleteGroupFromUser: PropTypes.func.isRequired,
+   deleteThisGroup: PropTypes.func.isRequired,
+   groupsData: PropTypes.array.isRequired,
+   usersData: PropTypes.array.isRequired
+};

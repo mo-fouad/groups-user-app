@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { Button, Col, Row } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -17,3 +18,8 @@ function LinkBtn(props) {
 }
 
 export default LinkBtn;
+
+LinkBtn.propTypes = {
+   linkText: PropTypes.string,
+   linkTo: PropTypes.string
+};

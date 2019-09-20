@@ -13,10 +13,6 @@ function GroupDetails(props) {
       return user.group_id === props.match.params.group_name;
    });
 
-   const delteThisGroup = groupSlug => {
-      // Delete This Group
-   };
-
    if (groupData) {
       return (
          <section className="group-cards">
@@ -24,8 +20,6 @@ function GroupDetails(props) {
                <Col md="12">
                   <h3>{groupData.group_name}</h3>
                   <p>{groupData.group_description}</p>
-                  <hr />
-                  <Button onClick={() => delteThisGroup(groupData.group_slug)}>Delete this Group</Button>
                </Col>
             </Row>
             <hr />
@@ -38,10 +32,12 @@ function GroupDetails(props) {
                      {usersData.map((user, index) => (
                         <Col key={index} md="4">
                            <SmallCard
+                              hide_x_btn={false}
                               card_id={`/user/${user.user_id}`}
                               card_title={user.user_name}
-                              card_description=""
+                              card_description={user.group_id}
                               card_link={`/user/${user.user_slug}`}
+                              card_link_Dec="View User Profile"
                            />
                         </Col>
                      ))}
@@ -50,6 +46,7 @@ function GroupDetails(props) {
                {!usersData.length > 0 && <Col md="12">Upss, we dont Have any users Yet :(</Col>}
             </Row>
             <hr />
+            {/*todo: Handel Adding more Groups to specific group*/}
             <LinkBtn linkText="Add More Users" linkTo="/users" />
          </section>
       );

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
@@ -56,6 +57,7 @@ class AddNewGroup extends Component {
          return (
             <div>
                <Row>
+                  <hr />
                   <Col>
                      <Form onSubmit={this.handleSubmit}>
                         <FormGroup>
@@ -122,3 +124,10 @@ export default connect(
    mapStateToProps,
    mapDispatchToProps
 )(withRouter(AddNewGroup));
+
+AddNewGroup.propTypes = {
+   addNewUser: PropTypes.func.isRequired,
+   groupsData: PropTypes.array.isRequired,
+   history: PropTypes.object.isRequired,
+   usersData: PropTypes.array.isRequired
+};

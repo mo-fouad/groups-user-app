@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Input } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -40,6 +41,7 @@ class SearchBar extends Component {
                placeholder="Search For A User or A groups"
             />
 
+            <hr />
             {/*Search Result*/}
 
             {SearKet && (
@@ -78,3 +80,8 @@ class SearchBar extends Component {
 }
 
 export default SearchBar;
+
+SearchBar.propTypes = {
+   groupsData: PropTypes.array.isRequired,
+   usersData: PropTypes.array.isRequired
+};

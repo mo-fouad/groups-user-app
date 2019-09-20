@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
@@ -37,8 +38,6 @@ class AddNewGroup extends Component {
       } else {
          alert("already Exists");
       }
-
-      //this.props.formSubmitted(this.state);
    };
 
    render() {
@@ -99,3 +98,9 @@ export default connect(
    mapStateToProps,
    mapDispatchToProps
 )(withRouter(AddNewGroup));
+
+AddNewGroup.propTypes = {
+   addNewGroup: PropTypes.func.isRequired,
+   groupsData: PropTypes.array.isRequired,
+   history: PropTypes.object.isRequired
+};

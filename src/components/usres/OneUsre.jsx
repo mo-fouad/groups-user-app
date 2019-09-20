@@ -1,6 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Button } from "reactstrap";
+import * as userActions from "../../redux/actions/userActions";
+import { bindActionCreators } from "redux";
+import { withRouter } from "react-router-dom";
 
 function UserDetails(props) {
    let userData = props.usersData.filter(user => {
@@ -8,7 +11,14 @@ function UserDetails(props) {
    })[0];
 
    const deleteThisUser = userSlug => {
-      // Delete this User
+      // Delete From users
+      let confirmDelete = window.confirm("Are you sure you want to delete this user ?!");
+
+      if (confirmDelete) {
+         const { deleteThisUser } = props;
+         deleteThisUser(userSlug);
+      }
+      props.history.push("/users");
    };
 
    if (userData) {
@@ -38,4 +48,12 @@ const mapStateToProps = state => {
    };
 };
 
-export default connect(mapStateToProps)(UserDetails);
+// Map action to props so we have access to different actions
+function mapDispatchToProps(dispatch) {
+   return bindActionCreators(Object.assign({}, userActions), dispatch);
+}
+
+export default connect(
+   mapStateToProps,
+   mapDispatchToProps
+)(withRouter(UserDetails));
