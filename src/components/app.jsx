@@ -18,6 +18,7 @@ import AddNewGroup from "./groups/AddNewGroup";
 
 // ReactStrap
 import { Container, Spinner } from "reactstrap";
+import SearchBar from "./search/SearchBar";
 
 class App extends Component {
    componentDidMount() {}
@@ -36,6 +37,7 @@ class App extends Component {
             <Fragment>
                <Header />
                <Container>
+                  <SearchBar usersData={usersData} groupsData={groupsData} />
                   <Switch>
                      <Route exact path="/">
                         <WelcomeHeading groupsData={groupsData} usersData={usersData} />

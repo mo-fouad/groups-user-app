@@ -11,7 +11,7 @@ const store = configureStore();
 render(
    <Provider store={store}>
       <Router>
-         <App></App>
+         <App />
       </Router>
    </Provider>,
    document.getElementById("app")

@@ -8,7 +8,6 @@ import * as groupActions from "../../redux/actions/groupActions";
 import * as userActions from "../../redux/actions/userActions";
 
 function Groups(props) {
-   console.log(props);
    const deleteThisGroup = groupSlug => {
       let confirm = window.confirm("Are you sure about deleting this group ?!");
       if (confirm) {
