@@ -11,12 +11,25 @@ function Groups(props) {
    const deleteThisGroup = groupSlug => {
       let confirm = window.confirm("Are you sure about deleting this group ?!");
       if (confirm) {
-         // Deleting Group And Removing Group slug from users table
-         const { deleteThisGroup, deleteGroupFromUser } = props;
-         deleteThisGroup(groupSlug);
+         // checking if the group has any users
+         let groupExists = props.usersData.some(user => {
+            return user.group_id === groupSlug;
+         });
 
-         // update State with Deleted Group
-         deleteGroupFromUser(groupSlug);
+         if (!groupExists) {
+            // Deleting Group And Removing Group slug from users table
+            const { deleteThisGroup, deleteGroupFromUser } = props;
+            deleteThisGroup(groupSlug);
+
+            // if we want to delete the group and leave the users with out Group .. in the future
+            // update State with Deleted Group
+            deleteGroupFromUser(groupSlug);
+         } else {
+            // todo: to enhance this Alert with Notification
+            alert(
+               "this Group Has Users Already, you can't delete it Please delete the Users that joined this group First"
+            );
+         }
       }
    };
 
