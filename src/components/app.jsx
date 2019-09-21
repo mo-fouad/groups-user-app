@@ -77,12 +77,12 @@ function mapDispatchToProps(dispatch) {
    return bindActionCreators(Object.assign({}, groupsActions), dispatch);
 }
 
-export default connect(
-   mapStateToProps,
-   mapDispatchToProps
-)(App);
-
 App.propTypes = {
    groupsData: PropTypes.array,
    usersData: PropTypes.array
 };
+
+export default connect(
+   mapStateToProps,
+   mapDispatchToProps
+)(App);
