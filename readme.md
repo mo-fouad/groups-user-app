@@ -1,4 +1,5 @@
 <h1>Groups-Users Application</h1>
+<a href="https://www.codacy.com/manual/mo-fouad/groups-user-app?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=mo-fouad/groups-user-app&amp;utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/9888c2d761ec4184a3a789de2d9ffb9f?isInternal=true"></a>
 
 it is a group web application, it enables you to add groups & users, 
 - you can assign any user to any group.
