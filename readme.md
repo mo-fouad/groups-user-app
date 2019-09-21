@@ -1,4 +1,4 @@
-<h1>User-Groups Application</h1>
+<h1>Groups-Users Application</h1>
 
 it is a group web application, it enables you to add groups & users, 
 - you can assign any user to any group.
